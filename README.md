@@ -2,7 +2,7 @@
 
 ## Simple Nova Card for Displaying Tables
 
-**NOTE**: This has been forked from [whitespacecode/nova-custom-table-card](https://github.com/m-a-k-o/nova-custom-table-card), see [PR #2](https://github.com/whitespacecode/nova-table-card/pull/2). This fork will be deleted from Packagist once the PR is merged.
+**NOTE**: This has been forked from [whitespacecode/nova-table-card](https://github.com/whitespacecode/nova-table-card), see [PR #2](https://github.com/whitespacecode/nova-table-card/pull/2). This fork will be deleted from Packagist once the PR is merged.
 
 Simple card table with data of you choice.
 
