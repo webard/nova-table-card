@@ -2,8 +2,7 @@
 
 ## Simple Nova Card for Displaying Tables
 
-**NOTE**: This has been forked from [m-a-k-o/nova-custom-table-card](https://github.com/m-a-k-o/nova-custom-table-card), see [issue #8](https://github.com/m-a-k-o/nova-custom-table-card/issues/8)
-
+**NOTE**: This has been forked from [whitespacecode/nova-custom-table-card](https://github.com/m-a-k-o/nova-custom-table-card), see [PR #2](https://github.com/whitespacecode/nova-table-card/pull/2)
 
 Simple card table with data of you choice.
 
@@ -16,12 +15,12 @@ It can be useful as latest order list or latest posts, ...
 - `php: >=8.1`
 - `laravel/nova: ^4.0`
 
- ## Installation
+## Installation
 
 You can install the package in to a Laravel app that uses [Nova](https://nova.laravel.com) via composer:
 
 ```bash
-composer require whitespacecode/nova-table-card
+composer require webard/nova-table-card
 ```
 
 You must register the card with NovaServiceProvider.
@@ -56,7 +55,7 @@ public function cards()
     return [
         // ...
 
-        // all the parameters are required except title and/or viewLink 
+        // all the parameters are required except title and/or viewLink
         (new TableCard)
             ->header([
                 Cell::make('Order Number'),
@@ -148,15 +147,16 @@ class LatestOrders extends TableCard
     {
         switch ($status) {
             case 'Ordered':
-                return 1;            
+                return 1;
             default:
                 return 0.
-        } 
+        }
     }
 }
 ```
 
 Then simply include your custom class like a normal card within your resource
+
 ```php
 use App\Nova\Cards\LatestOrders;
 
@@ -169,13 +169,18 @@ protected function cards()
  }
 ```
 
-#### Note: 
+#### Note:
+
 If you don't specify viewLink() on a row `Row::make()->viewLink()`, show icon will not be visible.
+
 #### Additional Fields in viewAll
-You can also show a viewAll on the table with `$this->viewAll()` 
+
+You can also show a viewAll on the table with `$this->viewAll()`
+
 - **label (optional)**: By default, it is set to 'View All'.
 - **position (optional)**: By default, it is set to 'top'. You can change it to 'bottom' if needed.
 - **style (optional)**: DThe default style is a 'link'. Alternatively, you can set it to 'button' for a button-style appearance.
+
 ```php
 $this->viewAll([
     'label' => '__('Latest Orders')',
@@ -186,7 +191,9 @@ $this->viewAll([
 ```
 
 ## Table Style Customization
+
 To show more data on your table, you can use the "tight" table style option designed to increase the visual density of your table rows.
+
 ```php
 use Whitespacecode\TableCard\TableCard;
 
@@ -200,28 +207,33 @@ protected function cards()
      ];
  }
 ```
+
 Or override the `$style` property on your custom class:
+
 ```php
 $this->style = 'tight';
 ```
 
 ## Using the pagination
+
 The pagination accepts a default `Illuminate\Pagination\LengthAwarePaginator`
 
 When getting your data just use the default `->paginate()` and pass your data to the paginator.<br>
 Everything else stays the same.
+
 ```php
 class LatestOrders extends TableCard
 {
     public function __construct()
     {
         $orders = Orders::paginate(5);
-        
-        //You want to start by showing the latest result? Get them by latest 
+
+        //You want to start by showing the latest result? Get them by latest
         //$orders = Orders::latest()->paginate(5);
 
         $this->paginator($orders);
     }
 }
 ```
+
 ![Nova Table Card](https://github.com/Whitespacecode/nova-table-card/blob/master/examplePaginate.png)
